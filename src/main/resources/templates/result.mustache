@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>book list</title>
+</head>
+<body>
+<h2>검색한 도서 목록 : "{{text}}"에 대한 검색어</h2>
+<table border="1">
+    <tr bgcolor="pink">
+        <td>isbn</td>
+        <td>도서 이미지</td>
+        <td>도서제목</td>
+        <td>저자/출판사</td>
+        <td>소개</td>
+        <td>출판일</td>
+    </tr>
+    {{#books}}
+        <tr>
+            <td>{{isbn}}</td>
+            <td><img src="{{image}}" alt="{{title}}" width="60%" height="60%"></td>
+            <td><a href="{{link}}">{{title}}</a></td>
+            <td>{{author}}/{{publisher}}</td>
+            <td>{{description}}</td>
+            <td>{{pubdate}}</td>
+        </tr>
+    {{/books}}
+</table>
+</body>
+</html>
