@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -25,6 +26,12 @@ import java.util.List;
 @Controller
 public class BookController {
 
+    @Value("${naver-client-id}")
+    private String clientId;
+
+    @Value("${naver-client-secret}")
+    private String clientSecret;
+
     @GetMapping("/book/search")
     public String search() {
         return "search";
@@ -34,10 +41,6 @@ public class BookController {
     public String result(@RequestParam("bookname") String text, Model model) {
         log.info("Received text: {}", text);
         model.addAttribute("text", text);
-
-        //네이버 검색 API 요청
-        String clientId = "clientId";
-        String clientSecret = "clientSecret";
 
         //String apiURL
         URI uri = UriComponentsBuilder
